@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crux — Delete Your Account</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    line-height: 1.6;
+    color: #1b1b1f;
+    background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e7e7ea; background: #121114; }
+    a { color: #ff8a5c; }
+    hr { border-color: #333; }
+    input { background: #1c1b1f !important; color: #e7e7ea !important; border-color: #3a393f !important; }
+    .callout { background: rgba(255,138,92,0.12) !important; }
+    .card { background: #19181b !important; border-color: #2c2b30 !important; }
+  }
+  h1 { font-size: 1.7rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.1rem; margin-top: 0; }
+  a { color: #d1541f; }
+  hr { border: none; border-top: 1px solid #e2e2e2; margin: 2rem 0; }
+  .callout {
+    background: rgba(209,84,31,0.08);
+    border-left: 3px solid #d1541f;
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  .card {
+    background: rgba(128,128,128,0.06);
+    border: 1px solid rgba(128,128,128,0.2);
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+    margin: 1.25rem 0;
+  }
+  label { display: block; font-size: 0.9rem; font-weight: 600; margin: 0.9rem 0 0.3rem; }
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  button {
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background: #d1541f;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.6; cursor: default; }
+  #status {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    display: none;
+  }
+  #status.error { display: block; background: rgba(220,38,38,0.12); color: #dc2626; }
+  #status.success { display: block; background: rgba(22,163,74,0.12); color: #16a34a; }
+  #status.pending { display: block; background: rgba(128,128,128,0.12); }
+  ul { padding-left: 1.3rem; }
+  li { margin-bottom: 0.35rem; }
+</style>
+</head>
+<body>
+
+<h1>Delete your Crux account</h1>
+<p>This page permanently deletes your Crux account and every row of data tied
+to it, without needing the app installed. It calls the same deletion the app
+itself uses in Settings.</p>
+
+<p class="callout"><strong>This cannot be undone.</strong> Your profile,
+training program, workout history, bodyweight log, measurements, chat history
+and account sign-in are all deleted immediately. Progress photos live only on
+your device and are unaffected by this page — clear them from the app or by
+uninstalling.</p>
+
+<hr>
+
+<h2>Option 1 — from inside the app (fastest)</h2>
+<p>Open Crux → <strong>Profile → Settings → Delete my account</strong>.</p>
+
+<hr>
+
+<h2>Option 2 — from this page</h2>
+<p>Sign in with the email and password for the account you want deleted.</p>
+
+<div class="card">
+  <form id="deleteForm">
+    <label for="email">Email address</label>
+    <input id="email" type="email" required autocomplete="email">
+
+    <label for="password">Password</label>
+    <input id="password" type="password" required autocomplete="current-password">
+
+    <button id="submitBtn" type="submit">Delete my account permanently</button>
+  </form>
+  <div id="status"></div>
+</div>
+
+<p style="font-size:0.9rem;opacity:0.75">
+  Signed in with Google or Apple, and never set a password? This form can't
+  authenticate you — use Option 1 in the app, or email
+  <a href="mailto:privacy@crux.app">privacy@crux.app</a> from your account's
+  address and we will verify and delete it manually within 30 days.
+</p>
+
+<hr>
+
+<h2>What gets deleted</h2>
+<ul>
+  <li>Your profile, training program, and every logged workout</li>
+  <li>Bodyweight history and body measurements</li>
+  <li>Water and protein log entries</li>
+  <li>AI Coach chat history</li>
+  <li>Friendships and quest/streak progress</li>
+  <li>Your sign-in identity (email, password hash, OAuth link)</li>
+</ul>
+<p style="font-size:0.9rem;opacity:0.75">
+  Payment records, where they exist, are kept for the period tax and
+  accounting law requires, with the link to your identity removed. Full
+  detail in the <a href="privacy-policy.html">Privacy Policy</a>.
+</p>
+
+<hr>
+<p><a href="privacy-policy.html">Privacy Policy</a> ·
+   <a href="terms-of-use.html">Terms of Use</a> ·
+   <a href="mailto:privacy@crux.app">privacy@crux.app</a></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  // Public by design — the anon key only opens the door; row-level security
+  // decides what's behind it, same as inside the app itself.
+  const SUPABASE_URL = "https://ryklcllmzkpaxxpbsitg.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_aEyoZCvFj0ZCWct6dCOCRw_ClP3_7ww";
+  const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const form = document.getElementById("deleteForm");
+  const statusEl = document.getElementById("status");
+  const submitBtn = document.getElementById("submitBtn");
+
+  function setStatus(kind, message) {
+    statusEl.className = kind;
+    statusEl.textContent = message;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!confirm(
+      "This permanently deletes the Crux account for " + email +
+      " and everything in it. This cannot be undone.\n\nContinue?"
+    )) {
+      return;
+    }
+
+    submitBtn.disabled = true;
+    setStatus("pending", "Signing in…");
+
+    try {
+      const { data: signInData, error: signInError } =
+        await client.auth.signInWithPassword({ email, password });
+      if (signInError || !signInData.session) {
+        setStatus("error",
+          "Email or password is incorrect, or this account signs in with " +
+          "Google/Apple only — see the note above the button.");
+        submitBtn.disabled = false;
+        return;
+      }
+
+      setStatus("pending", "Deleting your account and data…");
+
+      const res = await fetch(SUPABASE_URL + "/functions/v1/delete-account", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + signInData.session.access_token,
+          "apikey": SUPABASE_ANON_KEY,
+          "Content-Type": "application/json",
+        },
+        body: "{}",
+      });
+      const body = await res.json().catch(() => ({}));
+
+      if (res.ok && body.deleted) {
+        form.style.display = "none";
+        setStatus("success",
+          "Done — your Crux account and all its data have been permanently " +
+          "deleted.");
+      } else {
+        setStatus("error",
+          body.error || "Something went wrong. Please try again, or email " +
+          "privacy@crux.app.");
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      setStatus("error",
+        "Couldn't reach the server. Check your connection and try again.");
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>

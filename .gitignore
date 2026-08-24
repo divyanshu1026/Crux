@@ -1,0 +1,61 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# ---------------------------------------------------------------------------
+# Secrets — never commit these
+# ---------------------------------------------------------------------------
+# Release signing (losing the keystore = losing the ability to update the app,
+# committing it = anyone can ship as you). Keep a private backup elsewhere.
+android/key.properties
+*.jks
+*.keystore
+
+# Server-side API keys (Anthropic / Gemini / Razorpay). `.env.example` is the
+# committed template; the real `.env` is not.
+supabase/.env
+
+# Local build/run config may contain project URLs + keys passed via dart-define.
+.claude/launch.json

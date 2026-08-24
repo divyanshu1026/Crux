@@ -1,0 +1,58 @@
+{
+  "@@locale": "en",
+
+  "appName": "Crux",
+  "@appName": {
+    "description": "The application name."
+  },
+
+  "navToday": "Today",
+  "@navToday": { "description": "Bottom navigation label for the Today tab." },
+  "navHistory": "History",
+  "@navHistory": { "description": "Bottom navigation label for the History tab." },
+  "navDashboard": "Dashboard",
+  "@navDashboard": { "description": "Bottom navigation label for the Dashboard tab." },
+  "navCoach": "Coach",
+  "@navCoach": { "description": "Bottom navigation label for the Coach tab." },
+  "navProfile": "Profile",
+  "@navProfile": { "description": "Bottom navigation label for the Profile tab." },
+
+  "todayTitle": "Today",
+  "@todayTitle": { "description": "Title on the Today screen." },
+  "todayPlaceholder": "Your plan for today shows up here.",
+  "@todayPlaceholder": { "description": "Placeholder body on the Today screen." },
+
+  "historyTitle": "History",
+  "@historyTitle": { "description": "Title on the History screen." },
+  "historyPlaceholder": "Every workout you finish is kept here.",
+  "@historyPlaceholder": { "description": "Placeholder body on the History screen." },
+
+  "dashboardTitle": "Dashboard",
+  "@dashboardTitle": { "description": "Title on the Dashboard screen." },
+  "dashboardPlaceholder": "Your rank, streak, and trends live here.",
+  "@dashboardPlaceholder": { "description": "Placeholder body on the Dashboard screen." },
+
+  "coachTitle": "Coach",
+  "@coachTitle": { "description": "Title on the Coach screen." },
+  "coachPlaceholder": "Ask your coach about training, form, or your plan.",
+  "@coachPlaceholder": { "description": "Placeholder body on the Coach screen." },
+
+  "profileTitle": "Profile",
+  "@profileTitle": { "description": "Title on the Profile screen." },
+  "profilePlaceholder": "Your account, settings, and preferences.",
+  "@profilePlaceholder": { "description": "Placeholder body on the Profile screen." },
+
+  "galleryTitle": "Design gallery",
+  "@galleryTitle": { "description": "Title on the internal design gallery screen." },
+  "gallerySubtitle": "Every token and component in one place.",
+  "@gallerySubtitle": { "description": "Subtitle on the design gallery screen." },
+
+  "actionStartWorkout": "Start workout",
+  "@actionStartWorkout": { "description": "Primary CTA to begin a workout." },
+  "actionLogSet": "Log set",
+  "@actionLogSet": { "description": "Primary CTA to log a single set." },
+  "actionResumeWorkout": "Resume workout",
+  "@actionResumeWorkout": { "description": "CTA to resume an unfinished workout." },
+  "actionCancel": "Cancel",
+  "@actionCancel": { "description": "Generic cancel action." }
+}

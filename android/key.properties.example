@@ -1,0 +1,23 @@
+# Crux — release signing credentials.
+#
+# 1. Copy this file to `android/key.properties` (that path is git-ignored).
+# 2. Generate an upload keystore ONCE and never lose it — losing it means you
+#    can no longer update the app under the same Play listing:
+#
+#      keytool -genkey -v -keystore %USERPROFILE%\crux-upload.jks \
+#        -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 \
+#        -alias crux
+#
+#    (On macOS/Linux use ~/crux-upload.jks and a forward-slash path below.)
+# 3. Back the .jks file up somewhere safe and private (password manager /
+#    encrypted drive). It is NOT in this repo on purpose.
+#
+# Note: with Play App Signing (recommended, default for new apps) this key is
+# your *upload* key. Google re-signs with the app signing key it holds, so a
+# lost upload key can be reset via support — but keep it safe regardless.
+
+storePassword=your-keystore-password
+keyPassword=your-key-password
+keyAlias=crux
+# Absolute path, forward slashes on all platforms:
+storeFile=C:/Users/you/crux-upload.jks

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto Backup rules (Android 11 and below).
+     Training data is worth restoring on a new device; the Supabase auth
+     session is not — a restored token on a different device is a security
+     smell, and the user can simply sign in again. -->
+<full-backup-content>
+    <include domain="sharedpref" path="." />
+    <exclude domain="sharedpref" path="FlutterSecureStorage.xml" />
+    <exclude domain="sharedpref" path="sb-auth-token.xml" />
+</full-backup-content>

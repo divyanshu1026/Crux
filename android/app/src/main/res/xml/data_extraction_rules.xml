@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Backup / device-transfer rules (Android 12+).
+     Same policy as backup_rules.xml: keep the training data, leave the auth
+     session behind so a restored device has to sign in fresh. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="sharedpref" path="." />
+        <exclude domain="sharedpref" path="FlutterSecureStorage.xml" />
+        <exclude domain="sharedpref" path="sb-auth-token.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="sharedpref" path="." />
+        <exclude domain="sharedpref" path="FlutterSecureStorage.xml" />
+        <exclude domain="sharedpref" path="sb-auth-token.xml" />
+    </device-transfer>
+</data-extraction-rules>

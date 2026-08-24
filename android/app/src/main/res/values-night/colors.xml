@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark ("Night Gym") canvas: #121114 — a warm near-black, never pure #000. -->
+<resources>
+    <color name="rq_splash_background">#121114</color>
+</resources>

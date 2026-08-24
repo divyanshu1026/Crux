@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Branded launch screen: theme-aware canvas + the ember barbell mark.
+     `rq_splash_background` resolves to the light or dark canvas via
+     values/ and values-night/, so the handoff to the Flutter UI is seamless
+     in both themes instead of flashing white before a dark-first app. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/rq_splash_background" />
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/splash_mark" />
+    </item>
+</layer-list>
